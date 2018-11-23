@@ -1,0 +1,111 @@
+def versions = [androidTest                       : '1.1.0-beta01',
+                archLifecycle                     : '2.0.0',
+                kotlin                            : '1.3.0',
+                navigation_version                : "1.0.0-alpha07",
+                appCompat_version                 : '1.0.0',
+                material_version                  : '1.0.0',
+                constraintLayout_version          : '2.0.0-alpha2',
+                archComponents_version            : '2.0.0',
+                glide_version                     : '4.8.0',
+
+                //Third party libraries,
+                kotlin_coroutines_version         : '1.0.0',
+                dagger_version                    : '2.19',
+                javaxAnnotations_version          : '1.0',
+                javaxInject_version               : '1',
+                retrofit_version                  : '2.5.0',
+                okhttp_logging_interceptor_version: '3.11.0',
+                timber_version                    : '4.7.1',
+
+                //Unit Testing,
+                robolectric_version               : '3.8',
+                junit_version                     : '4.12',
+                mockito_version                   : '2.0.0',
+                kluent_version                    : '1.15',
+
+                //Acceptance Testing,
+                runner_version                    : '1.1.0',
+                espresso_version                  : '3.1.0',
+                room_version                      : '2.0.0',
+                kotlin_version                    : '1.3.10',
+
+                //Development
+                leakCanaryVersion                 : '1.5']
+
+def build = [buildToolsVersion        : '28.0.3',
+             compileSdkVersion        : 28,
+             minSdkVersion            : 17,
+             targetSdkVersion         : 28,
+             javaVersion              : JavaVersion.VERSION_1_8,
+             testInstrumentationRunner: "androidx.test.runner.AndroidJUnitRunner",
+
+             gradlePlugins            : [android       : 'com.android.tools.build:gradle:3.2.1',
+                                         kotlin        : "org.jetbrains.kotlin:kotlin-gradle-plugin:${versions.kotlin}",
+                                         navigationArgs: "android.arch.navigation:navigation-safe-args-gradle-plugin:${versions.navigation_version}"]]
+
+
+
+
+def mainApplication = [kotlin                       : "org.jetbrains.kotlin:kotlin-stdlib:${versions.kotlin_version}",
+                       kotlinCoroutines             : "org.jetbrains.kotlinx:kotlinx-coroutines-core:${versions.kotlin_coroutines_version}",
+                       kotlinCoroutinesAndroid      : "org.jetbrains.kotlinx:kotlinx-coroutines-android:${versions.kotlin_coroutines_version}",
+                       appCompat                    : "androidx.appcompat:appcompat:${versions.appCompat_version}",
+                       cardView                     : "androidx.cardview:cardview:${versions.appCompat_version}",
+                       recyclerView                 : "androidx.recyclerview:recyclerview:${versions.appCompat_version}",
+                       material                     : "com.google.android.material:material:${versions.material_version}",
+                       constraintLayout             : "androidx.constraintlayout:constraintlayout:${versions.constraintLayout_version}",
+                       androidAnnotations           : "androidx.annotation:annotation:${versions.appCompat_version}",
+                       archComponents               : "androidx.lifecycle:lifecycle-extensions:${versions.archComponents_version}",
+                       archComponentsCompiler       : "androidx.lifecycle:lifecycle-compiler:${versions.archComponents_version}",
+                       glide                        : "com.github.bumptech.glide:glide:${versions.glide_version}",
+                       glideCompiler                : "com.github.bumptech.glide:compiler:${versions.glide_version}",
+                       daggerCompiler               : "com.google.dagger:dagger-compiler:${versions.dagger_version}",
+                       dagger                       : "com.google.dagger:dagger:${versions.dagger_version}",
+                       daggerSupport                : "com.google.dagger:dagger-android-support:${versions.dagger_version}",
+                       daggerAndroidProcessor       : "com.google.dagger:dagger-android-processor:${versions.dagger_version}",
+                       javaxAnnotation              : "javax.annotation:jsr250-api:${versions.javaxAnnotations_version}",
+                       javaxInject                  : "javax.inject:javax.inject:${versions.javaxInject_version}",
+                       retrofitretrofitGsonConverter: "com.squareup.retrofit2:converter-gson:${versions.retrofit_version}",
+                       retrofit                     : "com.squareup.retrofit2:retrofit:${versions.retrofit_version}",
+                       okhttpLoggingInterceptor     : "com.squareup.okhttp3:logging-interceptor:${versions.okhttp_logging_interceptor_version}",
+                       timber                       : "com.jakewharton.timber:timber:${versions.timber_version}",
+                       navigationFragment           : "android.arch.navigation:navigation-fragment-ktx:${versions.navigation_version}",
+                       navigationUi                 : "android.arch.navigation:navigation-ui-ktx:${versions.navigation_version}",
+                       retrofitRxJava2Adapter       : "com.squareup.retrofit2:adapter-rxjava2:2.3.0",
+                       room                         : "androidx.room:room-runtime:${versions.room_version}",
+                       roomCompiler                 : "androidx.room:room-compiler:${versions.room_version}",
+                       rxAndroid                    : 'io.reactivex.rxjava2:rxandroid:2.1.0',
+                       rxJava                       : "io.reactivex.rxjava2:rxjava:2.1.6",
+                       kotlinJdk                    : "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${versions.kotlin_version}"
+
+]
+
+def unitTesting = [kotlin     : "org.jetbrains.kotlin:kotlin-stdlib:${versions.kotlin_version}",
+                   kotlinTest : "org.jetbrains.kotlin:kotlin-test-junit:${versions.kotlin_version}",
+                   robolectric: "org.robolectric:robolectric:${versions.robolectric_version}",
+                   junit      : "junit:junit:${versions.junit_version}",
+                   mockito    : "com.nhaarman.mockitokotlin2:mockito-kotlin:${versions.mockito_version}",
+                   kluent     : "org.amshove.kluent:kluent:${versions.kluent_version}",
+                   roomTesting: "androidx.room:room-testing:${versions.room_version}",
+                   arch       : "androidx.arch.core:core-testing:2.0.0-rc01"
+
+]
+
+def acceptanceTesting = [testRunner        : "androidx.test:runner:${versions.runner_version}",
+                         testRunnerExt     : "androidx.test.ext:junit:1.0.0",
+                         testRules         : "androidx.test:rules:${versions.runner_version}",
+                         espressoCore      : "androidx.test.espresso:espresso-core:${versions.espresso_version}",
+                         espressoIntents   : "androidx.test.espresso:espresso-intents:${versions.espresso_version}",
+                         androidAnnotations: "androidx.annotation:annotation:${versions.appCompat_version}"]
+
+def development =
+        [leakCanary    : "com.squareup.leakcanary:leakcanary-android:${versions.leakCanaryVersion}",
+         leakCanaryNoop: "com.squareup.leakcanary:leakcanary-android-no-op:${versions.leakCanaryVersion}"]
+
+
+ext.deps = ["mainApplication"  : mainApplication,
+            "unitTesting"      : unitTesting,
+            "build"            : build,
+            "acceptanceTesting": acceptanceTesting,
+            "development"      : development,
+            "versions"         : versions]
