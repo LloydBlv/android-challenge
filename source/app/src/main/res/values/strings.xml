@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">GithubClient</string>
+  <string name="commits">Commits</string>
+    <string name="retry">Retry</string>
+  <string name="network_issue">Check you internet connection</string>
+  <string name="server_error">Something went wrong, Try again later</string>
 </resources>

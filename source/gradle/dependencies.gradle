@@ -16,6 +16,9 @@ def versions = [androidTest                       : '1.1.0-beta01',
                 retrofit_version                  : '2.5.0',
                 okhttp_logging_interceptor_version: '3.11.0',
                 timber_version                    : '4.7.1',
+                jetifier_version                  : '1.0.0-beta02',
+                findbugs_version                  : '3.0.2',
+                moshi_version                     : '1.8.0',
 
                 //Unit Testing,
                 robolectric_version               : '3.8',
@@ -41,6 +44,8 @@ def build = [buildToolsVersion        : '28.0.3',
 
              gradlePlugins            : [android       : 'com.android.tools.build:gradle:3.2.1',
                                          kotlin        : "org.jetbrains.kotlin:kotlin-gradle-plugin:${versions.kotlin}",
+                                         allopen       : "org.jetbrains.kotlin:kotlin-allopen:${versions.kotlin}",
+                                         jetifier      : "com.android.tools.build.jetifier:jetifier-processor:${versions.jetifier_version}",
                                          navigationArgs: "android.arch.navigation:navigation-safe-args-gradle-plugin:${versions.navigation_version}"]]
 
 
@@ -76,7 +81,12 @@ def mainApplication = [kotlin                       : "org.jetbrains.kotlin:kotl
                        roomCompiler                 : "androidx.room:room-compiler:${versions.room_version}",
                        rxAndroid                    : 'io.reactivex.rxjava2:rxandroid:2.1.0',
                        rxJava                       : "io.reactivex.rxjava2:rxjava:2.1.6",
-                       kotlinJdk                    : "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${versions.kotlin_version}"
+                       kotlinJdk                    : "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${versions.kotlin_version}",
+                       jetifier                     : "com.android.tools.build.jetifier:jetifier-core:${versions.jetifier_version}",
+                       findBugs                     : "com.google.code.findbugs:jsr305:${versions.findbugs_version}",
+                       moshiAdapter                 : "com.squareup.moshi:moshi-adapters:${versions.moshi_version}",
+                       moshi                        : "com.squareup.moshi:moshi:${versions.moshi_version}",
+                       moshiRetrofitCoverter        : "com.squareup.retrofit2:converter-moshi:${versions.retrofit_version}"
 
 ]
 
@@ -99,8 +109,8 @@ def acceptanceTesting = [testRunner        : "androidx.test:runner:${versions.ru
                          androidAnnotations: "androidx.annotation:annotation:${versions.appCompat_version}"]
 
 def development =
-        [leakCanary    : "com.squareup.leakcanary:leakcanary-android:${versions.leakCanaryVersion}",
-         leakCanaryNoop: "com.squareup.leakcanary:leakcanary-android-no-op:${versions.leakCanaryVersion}"]
+    [leakCanary    : "com.squareup.leakcanary:leakcanary-android:${versions.leakCanaryVersion}",
+     leakCanaryNoop: "com.squareup.leakcanary:leakcanary-android-no-op:${versions.leakCanaryVersion}"]
 
 
 ext.deps = ["mainApplication"  : mainApplication,

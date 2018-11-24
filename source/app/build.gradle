@@ -2,9 +2,13 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
+apply plugin: 'kotlin-allopen'
 apply plugin: 'androidx.navigation.safeargs'
 
-
+allOpen {
+    // allows mocking for classes w/o directly opening them for release builds
+    annotation 'com.android.example.github.testing.OpenClass'
+}
 android {
     compileSdkVersion deps.build.compileSdkVersion
     defaultConfig {
@@ -59,6 +63,17 @@ dependencies {
     implementation applicationDependencies.archComponents
     implementation applicationDependencies.material
     implementation applicationDependencies.constraintLayout
+
+    implementation applicationDependencies.dagger
+    kapt applicationDependencies.daggerCompiler
+    kapt applicationDependencies.daggerAndroidProcessor
+    implementation applicationDependencies.daggerSupport
+    kapt applicationDependencies.jetifier
+    implementation applicationDependencies.findBugs
+    implementation applicationDependencies.moshi
+    implementation applicationDependencies.moshiAdapter
+    implementation applicationDependencies.moshiRetrofitCoverter
+
 
     implementation applicationDependencies.glide
     kapt applicationDependencies.glideCompiler

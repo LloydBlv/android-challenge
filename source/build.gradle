@@ -13,7 +13,8 @@ subprojects{
             classpath deps.build.gradlePlugins.android
             classpath deps.build.gradlePlugins.kotlin
             classpath deps.build.gradlePlugins.navigationArgs
-
+            classpath deps.build.gradlePlugins.allopen
+            classpath deps.build.gradlePlugins.jetifier
         }
     }
 
